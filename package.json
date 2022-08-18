@@ -1,0 +1,9 @@
+{
+    "name": "@lumeweb/kernel-resolver-common",
+    "version": "0.1.0",
+    "dependencies": {
+        "@lumeweb/kernel-dns-client": "github:LumeWeb/kernel-dns-client",
+        "@lumeweb/resolver-common": "github:LumeWeb/resolver-common",
+        "libkmodule": "^0.2.51"
+    }
+}
