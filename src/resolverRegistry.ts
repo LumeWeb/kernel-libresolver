@@ -5,8 +5,19 @@ import {
   resolverError,
 } from "@lumeweb/resolver-common";
 import { resolve } from "@lumeweb/kernel-dns-client";
+import { RpcNetwork } from "@lumeweb/kernel-rpc-client";
 
 export class ResolverRegistry {
+  private _rpcNetwork: RpcNetwork;
+
+  constructor(network: RpcNetwork) {
+    this._rpcNetwork = network;
+  }
+
+  get rpcNetwork(): RpcNetwork {
+    return this._rpcNetwork;
+  }
+
   public async resolve(
     domain: string,
     options: ResolverOptions = { type: DNS_RECORD_TYPE.DEFAULT },
@@ -23,3 +34,5 @@ export class ResolverRegistry {
     return result;
   }
 }
+
+export { RpcNetwork };

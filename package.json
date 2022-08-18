@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "dependencies": {
         "@lumeweb/kernel-dns-client": "github:LumeWeb/kernel-dns-client",
+        "@lumeweb/kernel-rpc-client": "github:LumeWeb/kernel-rpc-client",
         "@lumeweb/resolver-common": "github:LumeWeb/resolver-common",
         "libkmodule": "^0.2.51"
     }
