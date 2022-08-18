@@ -41,3 +41,5 @@ async function handleResolve(aq: ActiveQuery) {
 
   aq.respond(ret);
 }
+
+export * from "./resolverRegistry.js";
