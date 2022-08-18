@@ -1,6 +1,7 @@
 {
     "name": "@lumeweb/kernel-resolver-common",
     "version": "0.1.0",
+    "main": "dist/index.js",
     "dependencies": {
         "@lumeweb/kernel-dns-client": "github:LumeWeb/kernel-dns-client",
         "@lumeweb/kernel-rpc-client": "github:LumeWeb/kernel-rpc-client",
