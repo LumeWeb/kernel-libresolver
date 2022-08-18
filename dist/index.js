@@ -30,3 +30,4 @@ async function handleResolve(aq) {
     }
     aq.respond(ret);
 }
+export * from "./resolverRegistry.js";
