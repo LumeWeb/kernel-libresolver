@@ -20,5 +20,6 @@ export declare class ResolverModule {
     options: ResolverOptions,
     bypassCache: boolean
   ): Promise<DNSResult>;
+  getSupportedTlds(): Promise<string[]>;
 }
 export { RpcNetwork };

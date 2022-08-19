@@ -48,5 +48,12 @@ export class ResolverModule {
         }
         return ret;
     }
+    async getSupportedTlds() {
+        const [ret, err] = await callModule(this.domain, "getSupportedTlds");
+        if (err) {
+            throw new Error(err);
+        }
+        return ret;
+    }
 }
 export { RpcNetwork };

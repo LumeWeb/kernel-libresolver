@@ -4,6 +4,7 @@ let resolver;
 export function setup(rm) {
     addHandler("resolve", handleResolve);
     addHandler("register", handleRegister);
+    addHandler("getSupportedTlds", handleGetSupportedTlds);
     onmessage = handleMessage;
     resolver = rm;
 }
@@ -29,5 +30,8 @@ async function handleResolve(aq) {
         return;
     }
     aq.respond(ret);
+}
+function handleGetSupportedTlds(aq) {
+    aq.respond(resolver.getSupportedTlds());
 }
 export * from "./resolverRegistry.js";
