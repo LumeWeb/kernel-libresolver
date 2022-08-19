@@ -7,6 +7,7 @@ let resolver: ResolverModule;
 export function setup(rm: ResolverModule) {
   addHandler("resolve", handleResolve);
   addHandler("register", handleRegister);
+  addHandler("getSupportedTlds", handleGetSupportedTlds);
   onmessage = handleMessage;
   resolver = rm;
 }
@@ -40,6 +41,10 @@ async function handleResolve(aq: ActiveQuery) {
   }
 
   aq.respond(ret);
+}
+
+function handleGetSupportedTlds(aq: ActiveQuery) {
+  aq.respond(resolver.getSupportedTlds());
 }
 
 export * from "./resolverRegistry.js";
