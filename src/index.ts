@@ -33,7 +33,7 @@ async function handleResolve(aq: ActiveQuery) {
   try {
     ret = await resolver.resolve(
       aq.callerInput.domain,
-      aq.callerInput?.options ?? {},
+      aq.callerInput?.options,
       aq.callerInput?.bypassCache || false
     );
   } catch (e: any) {
