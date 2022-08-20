@@ -2,6 +2,7 @@ import { addHandler, handleMessage } from "libkmodule";
 import { register } from "@lumeweb/kernel-dns-client";
 import { RpcNetwork } from "@lumeweb/kernel-rpc-client";
 import { ResolverRegistry } from "./resolverRegistry.js";
+import { DNS_RECORD_TYPE } from "@lumeweb/resolver-common";
 let resolver;
 export function setup(rm) {
     addHandler("resolve", handleResolve);
@@ -21,7 +22,7 @@ async function handleResolve(aq) {
     }
     let ret;
     try {
-        ret = await resolver.resolve(aq.callerInput.domain, aq.callerInput?.options, aq.callerInput?.bypassCache || false);
+        ret = await resolver.resolve(aq.callerInput.domain, aq.callerInput?.options ?? { type: DNS_RECORD_TYPE.CONTENT }, aq.callerInput?.bypassCache || false);
     }
     catch (e) {
         aq.reject(e);
