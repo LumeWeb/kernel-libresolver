@@ -7,6 +7,7 @@ import type {
 } from "@lumeweb/resolver-common";
 import { RpcNetwork } from "@lumeweb/kernel-rpc-client";
 import { ResolverRegistry } from "./resolverRegistry.js";
+import { DNS_RECORD_TYPE } from "@lumeweb/resolver-common";
 
 let resolver: ResolverModule;
 
@@ -33,7 +34,7 @@ async function handleResolve(aq: ActiveQuery) {
   try {
     ret = await resolver.resolve(
       aq.callerInput.domain,
-      aq.callerInput?.options ?? {},
+      aq.callerInput?.options ?? { type: DNS_RECORD_TYPE.CONTENT },
       aq.callerInput?.bypassCache || false
     );
   } catch (e: any) {
