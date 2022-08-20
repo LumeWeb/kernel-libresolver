@@ -21,7 +21,7 @@ async function handleResolve(aq) {
     }
     let ret;
     try {
-        ret = await resolver.resolve(aq.callerInput.domain, aq.callerInput?.options ?? {}, aq.callerInput?.bypassCache || false);
+        ret = await resolver.resolve(aq.callerInput.domain, aq.callerInput?.options, aq.callerInput?.bypassCache || false);
     }
     catch (e) {
         aq.reject(e);
