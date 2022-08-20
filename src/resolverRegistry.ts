@@ -33,7 +33,7 @@ export class ResolverRegistry {
 
   public async resolve(
     domain: string,
-    options: ResolverOptions = { type: DNS_RECORD_TYPE.DEFAULT },
+    options: ResolverOptions = { type: DNS_RECORD_TYPE.CONTENT },
     bypassCache: boolean = false
   ): Promise<DNSResult> {
     let result: DNSResult;
