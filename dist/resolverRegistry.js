@@ -19,7 +19,7 @@ export class ResolverRegistry {
             return new Set(resolvers.map((resolver) => new ResolverModule(this, resolver)));
         });
     }
-    async resolve(domain, options = { type: DNS_RECORD_TYPE.DEFAULT }, bypassCache = false) {
+    async resolve(domain, options = { type: DNS_RECORD_TYPE.CONTENT }, bypassCache = false) {
         let result;
         try {
             result = await resolve(domain, options, bypassCache);

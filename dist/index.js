@@ -1,12 +1,14 @@
 import { addHandler, handleMessage } from "libkmodule";
 import { register } from "@lumeweb/kernel-dns-client";
+import { RpcNetwork } from "@lumeweb/kernel-rpc-client";
+import { ResolverRegistry } from "./resolverRegistry.js";
 let resolver;
 export function setup(rm) {
     addHandler("resolve", handleResolve);
     addHandler("register", handleRegister);
     addHandler("getSupportedTlds", handleGetSupportedTlds);
     onmessage = handleMessage;
-    resolver = rm;
+    resolver = new rm(new ResolverRegistry(new RpcNetwork()));
 }
 async function handleRegister(aq) {
     await register();
