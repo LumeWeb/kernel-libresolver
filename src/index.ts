@@ -7,7 +7,7 @@ import type {
 } from "@lumeweb/resolver-common";
 import { RpcNetwork } from "@lumeweb/kernel-rpc-client";
 import { ResolverRegistry } from "./resolverRegistry.js";
-import { DNS_RECORD_TYPE } from "@lumeweb/resolver-common";
+import { DNS_RECORD_TYPE } from "@lumeweb/libresolver";
 
 let resolver: ResolverModule;
 
