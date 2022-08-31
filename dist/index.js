@@ -2,7 +2,7 @@ import { addHandler, handleMessage } from "libkmodule";
 import { register } from "@lumeweb/kernel-dns-client";
 import { RpcNetwork } from "@lumeweb/kernel-rpc-client";
 import { ResolverRegistry } from "./resolverRegistry.js";
-import { DNS_RECORD_TYPE } from "@lumeweb/resolver-common";
+import { DNS_RECORD_TYPE } from "@lumeweb/libresolver";
 let resolver;
 export function setup(rm) {
     addHandler("resolve", handleResolve);
