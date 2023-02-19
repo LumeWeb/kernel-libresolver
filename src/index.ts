@@ -1,13 +1,13 @@
 import { addHandler, ActiveQuery, handleMessage } from "libkmodule";
-import { register } from "@lumeweb/kernel-dns-client";
-import type {
-  DNSResult,
-  ResolverModuleConstructor,
+
+import type { DNSResult } from "@lumeweb/libresolver";
+import {
   ResolverModule,
-} from "@lumeweb/resolver-common";
-import { RpcNetwork } from "@lumeweb/kernel-rpc-client";
-import { ResolverRegistry } from "./resolverRegistry.js";
+  ResolverModuleConstructor,
+  ResolverRegistry,
+} from "./resolverRegistry.js";
 import { DNS_RECORD_TYPE } from "@lumeweb/libresolver";
+import { dnsClient } from "./client.js";
 
 let resolver: ResolverModule;
 
@@ -16,11 +16,11 @@ export function setup(rm: ResolverModuleConstructor) {
   addHandler("register", handleRegister);
   addHandler("getSupportedTlds", handleGetSupportedTlds);
   onmessage = handleMessage;
-  resolver = new rm(new ResolverRegistry(new RpcNetwork()) as any);
+  resolver = new rm(new ResolverRegistry());
 }
 
 async function handleRegister(aq: ActiveQuery) {
-  await register();
+  await dnsClient.register();
   aq.respond();
 }
 

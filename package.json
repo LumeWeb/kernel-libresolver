@@ -3,13 +3,16 @@
     "version": "0.1.0",
     "main": "dist/index.js",
     "dependencies": {
-        "@lumeweb/kernel-dns-client": "https://github.com/LumeWeb/kernel-dns-client.git",
-        "@lumeweb/kernel-rpc-client": "https://github.com/LumeWeb/kernel-rpc-client.git",
-        "@lumeweb/libresolver": "https://github.com/LumeWeb/libresolver.git",
-        "libkmodule": "^0.2.51"
+        "@lumeweb/kernel-dns-client": "git+https://git.lumeweb.com/LumeWeb/kernel-dns-client.git",
+        "@lumeweb/kernel-libresolver": "git+https://git.lumeweb.com/LumeWeb/kernel-libresolver.git",
+        "@lumeweb/kernel-rpc-client": "git+https://git.lumeweb.com/LumeWeb/kernel-rpc-client.git",
+        "@lumeweb/libkernel-universal": "git+https://git.lumeweb.com/LumeWeb/libkernel-universal.git",
+        "@lumeweb/libresolver": "git+https://git.lumeweb.com/LumeWeb/libresolver.git",
+        "libkmodule": "^0.2.53"
     },
     "devDependencies": {
-        "@lumeweb/relay-types": "https://github.com/LumeWeb/relay-types.git",
-        "@types/node": "^18.7.14"
+        "@lumeweb/relay-types": "git+https://git.lumeweb.com/LumeWeb/relay-types.git",
+        "@types/node": "^18.14.0",
+        "prettier": "^2.8.4"
     }
 }

@@ -3,31 +3,29 @@ import {
   ResolverOptions,
   DNS_RECORD_TYPE,
   resolverError,
-} from "@lumeweb/resolver-common";
-import { getResolvers, resolve } from "@lumeweb/kernel-dns-client";
-import { RpcNetwork } from "@lumeweb/kernel-rpc-client";
-import { callModule } from "libkmodule";
+  ResolverModuleConstructor as ResolverModuleConstructorBase,
+} from "@lumeweb/libresolver";
+import { Client, factory } from "@lumeweb/libkernel-universal";
+import { dnsClient } from "./client.js";
+
+export interface ResolverModuleConstructor
+  extends ResolverModuleConstructorBase {
+  new (resolver: ResolverRegistry): ResolverModule;
+}
 
 export class ResolverRegistry {
-  private _rpcNetwork: RpcNetwork;
-
-  constructor(network: RpcNetwork) {
-    this._rpcNetwork = network;
-  }
-
-  get rpcNetwork(): RpcNetwork {
-    return this._rpcNetwork;
-  }
-
   get resolvers(): Promise<Set<ResolverModule>> {
-    return getResolvers()
-      .catch(() => {
-        return new Set();
-      })
+    return dnsClient
+      .getResolvers()
       .then((resolvers: string[]) => {
         return new Set(
-          resolvers.map((resolver) => new ResolverModule(this, resolver))
+          resolvers.map((resolver) =>
+            factory<ResolverModule>(ResolverModule, resolver)(this, resolver)
+          )
         );
+      })
+      .catch(() => {
+        return new Set();
       });
   }
 
@@ -36,23 +34,22 @@ export class ResolverRegistry {
     options: ResolverOptions = { type: DNS_RECORD_TYPE.CONTENT },
     bypassCache: boolean = false
   ): Promise<DNSResult> {
-    let result: DNSResult;
-
     try {
-      result = await resolve(domain, options, bypassCache);
+      return dnsClient.resolve(domain, options, bypassCache);
     } catch (e: any) {
       return resolverError(e);
     }
-
-    return result;
   }
+  public register(resolver: ResolverModule): void {}
+  public clear(): void {}
 }
 
-export class ResolverModule {
+export class ResolverModule extends Client {
   private resolver: ResolverRegistry;
   private domain: string;
 
   constructor(resolver: ResolverRegistry, domain: string) {
+    super();
     this.resolver = resolver;
     this.domain = domain;
   }
@@ -62,25 +59,17 @@ export class ResolverModule {
     options: ResolverOptions,
     bypassCache: boolean
   ): Promise<DNSResult> {
-    const [ret, err] = await callModule(this.domain, "resolve", {
-      domain,
-      options,
-      bypassCache,
-    });
-    if (err) {
-      return resolverError(err);
+    try {
+      return this.callModuleReturn("resolve", {
+        domain,
+        options,
+        bypassCache,
+      });
+    } catch (e) {
+      return resolverError(e as Error);
     }
-
-    return ret;
   }
   async getSupportedTlds(): Promise<string[]> {
-    const [ret, err] = await callModule(this.domain, "getSupportedTlds");
-    if (err) {
-      throw new Error(err);
-    }
-
-    return ret;
+    return this.callModuleReturn("getSupportedTlds");
   }
 }
-
-export { RpcNetwork };
