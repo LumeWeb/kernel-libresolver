@@ -1,59 +1,49 @@
-import { DNS_RECORD_TYPE, resolverError, } from "@lumeweb/resolver-common";
-import { getResolvers, resolve } from "@lumeweb/kernel-dns-client";
-import { RpcNetwork } from "@lumeweb/kernel-rpc-client";
-import { callModule } from "libkmodule";
+import { DNS_RECORD_TYPE, resolverError, } from "@lumeweb/libresolver";
+import { Client, factory } from "@lumeweb/libkernel-universal";
+import { dnsClient } from "./client.js";
 export class ResolverRegistry {
-    _rpcNetwork;
-    constructor(network) {
-        this._rpcNetwork = network;
-    }
-    get rpcNetwork() {
-        return this._rpcNetwork;
-    }
     get resolvers() {
-        return getResolvers()
+        return dnsClient
+            .getResolvers()
+            .then((resolvers) => {
+            return new Set(resolvers.map((resolver) => factory(ResolverModule, resolver)(this, resolver)));
+        })
             .catch(() => {
             return new Set();
-        })
-            .then((resolvers) => {
-            return new Set(resolvers.map((resolver) => new ResolverModule(this, resolver)));
         });
     }
     async resolve(domain, options = { type: DNS_RECORD_TYPE.CONTENT }, bypassCache = false) {
-        let result;
         try {
-            result = await resolve(domain, options, bypassCache);
+            return dnsClient.resolve(domain, options, bypassCache);
         }
         catch (e) {
             return resolverError(e);
         }
-        return result;
     }
+    register(resolver) { }
+    clear() { }
 }
-export class ResolverModule {
+export class ResolverModule extends Client {
     resolver;
     domain;
     constructor(resolver, domain) {
+        super();
         this.resolver = resolver;
         this.domain = domain;
     }
     async resolve(domain, options, bypassCache) {
-        const [ret, err] = await callModule(this.domain, "resolve", {
-            domain,
-            options,
-            bypassCache,
-        });
-        if (err) {
-            return resolverError(err);
+        try {
+            return this.callModuleReturn("resolve", {
+                domain,
+                options,
+                bypassCache,
+            });
         }
-        return ret;
+        catch (e) {
+            return resolverError(e);
+        }
     }
     async getSupportedTlds() {
-        const [ret, err] = await callModule(this.domain, "getSupportedTlds");
-        if (err) {
-            throw new Error(err);
-        }
-        return ret;
+        return this.callModuleReturn("getSupportedTlds");
     }
 }
-export { RpcNetwork };
