@@ -37,3 +37,5 @@ function handleGetSupportedTlds(aq) {
     aq.respond(resolver.getSupportedTlds());
 }
 export * from "./resolverRegistry.js";
+export * from "@lumeweb/libresolver/dist/util.js";
+export * from "@lumeweb/libresolver/dist/types.js";
