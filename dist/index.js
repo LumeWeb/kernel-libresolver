@@ -1,5 +1,4 @@
 import { addHandler, handleMessage } from "libkmodule";
-import { ResolverRegistry, } from "./resolverRegistry.js";
 import { DNS_RECORD_TYPE } from "@lumeweb/libresolver";
 import { dnsClient } from "./client.js";
 let resolver;
@@ -8,7 +7,8 @@ export function setup(rm) {
     addHandler("register", handleRegister);
     addHandler("getSupportedTlds", handleGetSupportedTlds);
     onmessage = handleMessage;
-    resolver = new rm(new ResolverRegistry());
+    resolver = rm;
+    resolver.resolver = dnsClient;
 }
 async function handleRegister(aq) {
     await dnsClient.register();
@@ -36,7 +36,6 @@ async function handleResolve(aq) {
 function handleGetSupportedTlds(aq) {
     aq.respond(resolver.getSupportedTlds());
 }
-export * from "./resolverRegistry.js";
 export * from "@lumeweb/libresolver/dist/util.js";
 export * from "@lumeweb/libresolver/dist/types.js";
 export { AbstractResolverModule } from "@lumeweb/libresolver/dist/resolverModule.js";
