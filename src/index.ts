@@ -9,7 +9,7 @@ import { dnsClient } from "./client.js";
 import { DnsClient } from "@lumeweb/kernel-dns-client";
 import { ResolverOptions } from "@lumeweb/libresolver/src/types.js";
 
-let resolver: ResolverModule;
+let resolver: ResolverModule | ResolverModuleBase;
 
 export interface ResolverModule {
   get resolver(): DnsClient;
@@ -25,12 +25,13 @@ export interface ResolverModule {
   getSupportedTlds(): any;
 }
 
-export function setup(rm: ResolverModule) {
+export function setup(rm: ResolverModule | ResolverModuleBase) {
   addHandler("resolve", handleResolve);
   addHandler("register", handleRegister);
   addHandler("getSupportedTlds", handleGetSupportedTlds);
   onmessage = handleMessage;
   resolver = rm;
+  // @ts-ignore
   resolver.resolver = dnsClient;
 }
 
