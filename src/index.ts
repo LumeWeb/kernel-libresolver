@@ -7,12 +7,22 @@ import type {
 import { DNS_RECORD_TYPE } from "@lumeweb/libresolver";
 import { dnsClient } from "./client.js";
 import { DnsClient } from "@lumeweb/kernel-dns-client";
+import { ResolverOptions } from "@lumeweb/libresolver/src/types.js";
 
 let resolver: ResolverModule;
 
-interface ResolverModule extends ResolverModuleBase {
+export interface ResolverModule {
   get resolver(): DnsClient;
   set resolver(value: DnsClient);
+  resolve(
+    domain: string,
+    options: ResolverOptions,
+    bypassCache: boolean
+  ): Promise<DNSResult>;
+
+  getSupportedTlds(): string[];
+  getSupportedTlds(): Promise<string[]>;
+  getSupportedTlds(): any;
 }
 
 export function setup(rm: ResolverModule) {
