@@ -8,6 +8,7 @@ export function setup(rm) {
     addHandler("getSupportedTlds", handleGetSupportedTlds);
     onmessage = handleMessage;
     resolver = rm;
+    // @ts-ignore
     resolver.resolver = dnsClient;
 }
 async function handleRegister(aq) {
