@@ -1,19 +1,32 @@
 {
     "name": "@lumeweb/kernel-libresolver",
     "version": "0.1.0",
-    "main": "dist/index.js",
-    "dependencies": {
-        "@lumeweb/kernel-dns-client": "git+https://git.lumeweb.com/LumeWeb/kernel-dns-client.git",
-        "@lumeweb/kernel-libresolver": "git+https://git.lumeweb.com/LumeWeb/kernel-libresolver.git",
-        "@lumeweb/kernel-rpc-client": "git+https://git.lumeweb.com/LumeWeb/kernel-rpc-client.git",
-        "@lumeweb/libkernel-universal": "git+https://git.lumeweb.com/LumeWeb/libkernel-universal.git",
-        "@lumeweb/libresolver": "git+https://git.lumeweb.com/LumeWeb/libresolver.git",
-        "libkmodule": "^0.2.53"
+    "main": "lin/index.js",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "gitea@git.lumeweb.com:LumeWeb/kernel-libresolver.git"
     },
     "devDependencies": {
-        "@lumeweb/relay-types": "git+https://git.lumeweb.com/LumeWeb/relay-types.git",
-        "@types/node": "^18.14.0",
-        "prettier": "^2.8.4",
-        "typescript": "^4.9.5"
+        "@lumeweb/node-library-preset": "^0.2.7",
+        "presetter": "*"
+    },
+    "readme": "ERROR: No README data found!",
+    "_id": "@lumeweb/kernel-libresolver@0.1.0",
+    "scripts": {
+        "prepare": "presetter bootstrap",
+        "build": "run build",
+        "semantic-release": "semantic-release"
+    },
+    "dependencies": {
+        "@lumeweb/kernel-dns-client": "^0.0.2-develop.1",
+        "@lumeweb/libkernel": "^0.1.0-develop.14",
+        "@lumeweb/libresolver": "^0.0.2-develop.1"
+    },
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "access": "public"
     }
 }
