@@ -4,38 +4,17 @@ import {
   handleMessage,
 } from "@lumeweb/libkernel/module";
 
-import type {
-  DNSResult,
-  ResolverModule as ResolverModuleBase,
-} from "@lumeweb/libresolver";
+import type { DNSResult } from "@lumeweb/libresolver";
 import { DNS_RECORD_TYPE } from "@lumeweb/libresolver";
 import { dnsClient } from "./client.js";
-import { DnsClient } from "@lumeweb/kernel-dns-client";
-import type { ResolverOptions } from "@lumeweb/libresolver";
+import { ResolverModule } from "@lumeweb/kernel-dns-client";
 
-let resolver: ResolverModule | ResolverModuleBase;
+let resolver: ResolverModule;
 
-export interface ResolverModule {
-  get resolver(): DnsClient;
-
-  set resolver(value: DnsClient);
-
-  resolve(
-    domain: string,
-    options: ResolverOptions,
-    bypassCache: boolean,
-  ): Promise<DNSResult>;
-
-  getSupportedTlds(): string[];
-
-  getSupportedTlds(): Promise<string[]>;
-
-  getSupportedTlds(): any;
-}
-
-export function setup(rm: ResolverModule | ResolverModuleBase) {
+export function setup(rm: ResolverModule) {
   addHandler("resolve", handleResolve);
   addHandler("register", handleRegister);
+  addHandler("ready", handleReady);
   addHandler("getSupportedTlds", handleGetSupportedTlds);
   onmessage = handleMessage;
   resolver = rm;
@@ -76,6 +55,12 @@ async function handleResolve(aq: ActiveQuery) {
 
 function handleGetSupportedTlds(aq: ActiveQuery) {
   aq.respond(resolver.getSupportedTlds());
+}
+
+async function handleReady(aq: ActiveQuery) {
+  await resolver.ready();
+
+  aq.respond();
 }
 
 export * from "@lumeweb/libresolver/lib/util.js";
