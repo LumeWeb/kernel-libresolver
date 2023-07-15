@@ -20,7 +20,7 @@
     "dependencies": {
         "@lumeweb/kernel-dns-client": "^0.1.0-develop.1",
         "@lumeweb/libkernel": "^0.1.0-develop.14",
-        "@lumeweb/libresolver": "^0.0.2-develop.1"
+        "@lumeweb/libresolver": "^0.1.0-develop.1"
     },
     "files": [
         "lib"
