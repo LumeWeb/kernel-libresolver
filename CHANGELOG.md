@@ -1,3 +1,10 @@
+# [0.1.0-develop.1](https://git.lumeweb.com/LumeWeb/kernel-libresolver/compare/v0.0.2-develop.2...v0.1.0-develop.1) (2023-07-15)
+
+
+### Features
+
+* add ready to setup ([c329921](https://git.lumeweb.com/LumeWeb/kernel-libresolver/commit/c329921aa403b65cb5938a8ea421bdbe3796541a))
+
 ## [0.0.2-develop.2](https://git.lumeweb.com/LumeWeb/kernel-libresolver/compare/v0.0.2-develop.1...v0.0.2-develop.2) (2023-07-14)
 
 
