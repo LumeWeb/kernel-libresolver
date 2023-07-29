@@ -18,8 +18,8 @@
         "semantic-release": "semantic-release"
     },
     "dependencies": {
-        "@lumeweb/kernel-dns-client": "^0.1.0-develop.2",
-        "@lumeweb/libkernel": "^0.1.0-develop.14",
+        "@lumeweb/kernel-dns-client": "^0.1.0-develop.4",
+        "@lumeweb/libkernel": "^0.1.0-develop.31",
         "@lumeweb/libresolver": "^0.1.0-develop.1"
     },
     "files": [
