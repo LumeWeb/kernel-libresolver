@@ -58,9 +58,7 @@ function handleGetSupportedTlds(aq: ActiveQuery) {
 }
 
 async function handleReady(aq: ActiveQuery) {
-  await resolver.ready();
-
-  aq.respond();
+  aq.respond(await resolver.ready());
 }
 
 export * from "@lumeweb/libresolver/lib/util.js";
