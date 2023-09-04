@@ -1,6 +1,6 @@
 {
     "name": "@lumeweb/kernel-libresolver",
-    "version": "0.1.0-develop.8",
+    "version": "0.1.0-develop.9",
     "main": "lib/index.js",
     "type": "module",
     "repository": {
