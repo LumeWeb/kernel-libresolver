@@ -9,7 +9,7 @@
             "version": "0.1.0-develop.9",
             "dependencies": {
                 "@lumeweb/kernel-dns-client": "^0.1.0-develop.7",
-                "@lumeweb/libkernel": "^0.1.0-develop.44",
+                "@lumeweb/libkernel": "^0.1.0-develop.62",
                 "@lumeweb/libresolver": "^0.1.0-develop.1"
             },
             "devDependencies": {
@@ -1671,11 +1671,11 @@
             }
         },
         "node_modules/@lumeweb/libkernel": {
-            "version": "0.1.0-develop.44",
-            "resolved": "https://registry.npmjs.org/@lumeweb/libkernel/-/libkernel-0.1.0-develop.44.tgz",
-            "integrity": "sha512-vja0bvr2YZvRs1/HocW4BBJOl39bbXFrJPMDGULqYFnW1GZOGIk3tYmqsv7FRxzMpty9aqX4HHxcrX/7AyGbGQ==",
+            "version": "0.1.0-develop.62",
+            "resolved": "https://registry.npmjs.org/@lumeweb/libkernel/-/libkernel-0.1.0-develop.62.tgz",
+            "integrity": "sha512-EZ0az1jWVfXKYTpP9hzyhasr3H58GJ5eUmetHIbRPI94t0e9VtRMR1gYdZ9yWBzaNDHEpsIob4nGv18bubeeuA==",
             "dependencies": {
-                "@lumeweb/libweb": "0.2.0-develop.49",
+                "@lumeweb/libweb": "0.2.0-develop.58",
                 "emittery": "^1.0.1",
                 "p-defer": "^4.0.0"
             }
@@ -1692,11 +1692,11 @@
             }
         },
         "node_modules/@lumeweb/libportal": {
-            "version": "0.2.0-develop.23",
-            "resolved": "https://registry.npmjs.org/@lumeweb/libportal/-/libportal-0.2.0-develop.23.tgz",
-            "integrity": "sha512-KN7KqFu5I+aYDeOL8hhaw1sjFjof8TrrPRvbdGmlQ7RDgkRbqiOQ8LQx2zPteBJPPGJfOtrnWWygBqy9wjuiaw==",
+            "version": "0.2.0-develop.38",
+            "resolved": "https://registry.npmjs.org/@lumeweb/libportal/-/libportal-0.2.0-develop.38.tgz",
+            "integrity": "sha512-ST6zc6MgXloLbnwbQZh4wGydOr9R3pR4AkPhZjCcn9tdhuMmTMJiEK5SLJ06Tl7dR9n/GX4lMVLlNVNRjvvcmQ==",
             "dependencies": {
-                "@lumeweb/libs5": "^0.1.0-develop.44",
+                "@lumeweb/libs5": "^0.1.0-develop.59",
                 "@noble/curves": "^1.1.0",
                 "@noble/hashes": "^1.3.1",
                 "detect-node": "^2.1.0",
@@ -1731,9 +1731,9 @@
             "integrity": "sha512-vTfeRa1eNGHdBB3IMNjdV+4p0zJ5bEYMLv+N9AwVbINM1mgzETFxU2PSR6+RlyQV2ewgISo/0ODEwLZwyztpDQ=="
         },
         "node_modules/@lumeweb/libs5": {
-            "version": "0.1.0-develop.44",
-            "resolved": "https://registry.npmjs.org/@lumeweb/libs5/-/libs5-0.1.0-develop.44.tgz",
-            "integrity": "sha512-BR/pII6v9i556tPBSDYUBszhFvSyQq+/Ptuopk7JIoRSqFzSsXWL0RteBi6v0qQzEffft7kOhaI1dLFOGZvWVQ==",
+            "version": "0.1.0-develop.59",
+            "resolved": "https://registry.npmjs.org/@lumeweb/libs5/-/libs5-0.1.0-develop.59.tgz",
+            "integrity": "sha512-O/sbv77MrNLQrGYkpXoEV8Pwe3wHoewXRa51ivTGa4GQKbihtmLThcCo6ZnxUQoWNjgx8yUmT5G29pPZqxjcww==",
             "dependencies": {
                 "@noble/curves": "^1.1.0",
                 "@noble/hashes": "^1.3.1",
@@ -1745,22 +1745,23 @@
             }
         },
         "node_modules/@lumeweb/libs5/node_modules/multiformats": {
-            "version": "12.1.0",
-            "resolved": "https://registry.npmjs.org/multiformats/-/multiformats-12.1.0.tgz",
-            "integrity": "sha512-/qTOKKnU8nwcVURjRcS+UN0QYgdS5BPZzY10Aiciu2SqncyCVMGV8KtD83EBFmsuJDsSEmT4sGvzcTkCoMw0sQ==",
+            "version": "12.1.1",
+            "resolved": "https://registry.npmjs.org/multiformats/-/multiformats-12.1.1.tgz",
+            "integrity": "sha512-GBSToTmri2vJYs8wqcZQ8kB21dCaeTOzHTIAlr8J06C1eL6UbzqURXFZ5Fl0EYm9GAFz1IlYY8SxGOs9G9NJRg==",
             "engines": {
                 "node": ">=16.0.0",
                 "npm": ">=7.0.0"
             }
         },
         "node_modules/@lumeweb/libweb": {
-            "version": "0.2.0-develop.49",
-            "resolved": "https://registry.npmjs.org/@lumeweb/libweb/-/libweb-0.2.0-develop.49.tgz",
-            "integrity": "sha512-KwlluSiWwCHUEr47LEC6la0seMUeOpQ/d06K2eTT8b5ZlZ0lXjvDWJeLQm8azZexldG8nW9ikev5YlBUAWagdA==",
+            "version": "0.2.0-develop.58",
+            "resolved": "https://registry.npmjs.org/@lumeweb/libweb/-/libweb-0.2.0-develop.58.tgz",
+            "integrity": "sha512-VObSCNXITDdqMIFGaBIOewx59ZEf8FNf0mnVrdKY5LdjDCg+ZLRskGyf8PQYOx30enT9v6yWFlD6Lu7XzjfyGQ==",
             "dependencies": {
                 "@lumeweb/community-portals": "^0.1.0-develop.6",
-                "@lumeweb/libportal": "0.2.0-develop.23",
+                "@lumeweb/libportal": "0.2.0-develop.38",
                 "@lumeweb/node-library-preset": "0.2.7",
+                "@noble/ciphers": "^0.3.0",
                 "@noble/curves": "^1.1.0",
                 "@noble/hashes": "^1.3.1",
                 "binconv": "^0.2.0"
@@ -1785,6 +1786,14 @@
             "peer": true,
             "bin": {
                 "semver": "bin/semver.js"
+            }
+        },
+        "node_modules/@noble/ciphers": {
+            "version": "0.3.0",
+            "resolved": "https://registry.npmjs.org/@noble/ciphers/-/ciphers-0.3.0.tgz",
+            "integrity": "sha512-ldbrnOjmNRwFdXcTM6uXDcxpMIFrbzAWNnpBPp4oTJTFF0XByGD6vf45WrehZGXRQTRVV+Zm8YP+EgEf+e4cWA==",
+            "funding": {
+                "url": "https://paulmillr.com/funding/"
             }
         },
         "node_modules/@noble/curves": {
@@ -18231,9 +18240,9 @@
             }
         },
         "node_modules/ws": {
-            "version": "8.13.0",
-            "resolved": "https://registry.npmjs.org/ws/-/ws-8.13.0.tgz",
-            "integrity": "sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==",
+            "version": "8.14.1",
+            "resolved": "https://registry.npmjs.org/ws/-/ws-8.14.1.tgz",
+            "integrity": "sha512-4OOseMUq8AzRBI/7SLMUwO+FEDnguetSk7KMb1sHwvF2w2Wv5Hoj0nlifx8vtGsftE/jWHojPy8sMMzYLJ2G/A==",
             "engines": {
                 "node": ">=10.0.0"
             },
